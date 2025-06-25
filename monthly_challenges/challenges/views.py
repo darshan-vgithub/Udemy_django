@@ -21,7 +21,7 @@ monthly_challenges={
 def monthly_challenges_by_name(request, month):
     try:
         challenge_text = monthly_challenges[month]
-        response_text = f"Month: {month}\nChallenge: {challenge_text}"
+        response_text = f"<h1>Month: {month}\nChallenge: {challenge_text}</h1>"
         return HttpResponse(response_text)
     except:
         return HttpResponseNotFound("This month is not supported")
