@@ -40,4 +40,8 @@ def monthly_challenges(request, month):
         challenge_text = HttpResponseNotFound("Invalid month! Please enter a valid month name.")
     
     return HttpResponse(challenge_text)
+
+
+def monthly_challenges_by_numbers(request,month):
+    return HttpResponse(month)
 # Create your views here.
