@@ -18,6 +18,17 @@ monthly_challenges={
     "december":"Embrace the change. It’s time to start something new and exciting.",
 }
 
+def index(request):
+    months = list(monthly_challenges.keys())
+
+    list_items = ""
+    for month in months:
+        month_path = reverse("month-challenge", args=[month])
+        list_items += f'<li><a href="{month_path}">{month.capitalize()}</a></li>'
+
+    response_html = f"<ul>{list_items}</ul>"
+    return HttpResponse(response_html)
+
 def monthly_challenges_by_name(request, month):
     try:
         challenge_text = monthly_challenges[month]
