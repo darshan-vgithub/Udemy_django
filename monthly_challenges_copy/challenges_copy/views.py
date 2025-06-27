@@ -23,6 +23,16 @@ def january(request):
 def february(request):
     return HttpResponse("February: Show love, not just to others but also to yourself. Self-care is important.")
 
+def index(request):
+    months=list(monthly_challenges.keys())
+
+    list_items=""
+    for month in months:
+        print(month)
+        list_items+=f'<li><a href="{reverse("month-challenge",args=[month])}">{month.capitalize()}</a></li>' # month=reverse("month-challenge",args=[month])
+    response_data=f"<ul>{list_items}</ul>"
+    return HttpResponse(response_data)
+
 def monthly_challenge_by_name(request,month):
     challenge_text=monthly_challenges[month]
     return HttpResponse(f"<h1>Month: {month}\nChallenge: {challenge_text}</h1>")
